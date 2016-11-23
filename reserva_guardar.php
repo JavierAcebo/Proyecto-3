@@ -20,6 +20,8 @@ else {
     $horaFi=$_POST["hora_final"];
     $fechaIni=$_POST['fecha_inicio'];
     $fechaFi=$_POST['fecha_final'];
+    $estado=$_POST['estado_reserva'];
+    //$usuario=$_POST['user'];
     // Se monta la consulta para grabar una nueva cita.
     $sql_consulta= "SELECT * FROM tbl_reservas WHERE ('".$fechaIni."' BETWEEN fecha_inicio_reserva AND fecha_final_reserva OR '".$fechaFi."' BETWEEN fecha_inicio_reserva AND fecha_final_reserva) AND id_recursos =".$recurso."";
 
@@ -31,6 +33,11 @@ else {
       $enviar = mysqli_query ($con, $consulta);
       //header('location: home.php?reserva=ok');
     }
+    if ($estado==0) {
+      $sql_disponible= "UPDATE `tbl_recursos` SET `estado_recursos` = '1' WHERE `tbl_recursos`.`id_recursos` = $recurso;";
+      $enviar3 = mysqli_query ($con, $sql_disponible);
+    }
+
 
   }
   else{

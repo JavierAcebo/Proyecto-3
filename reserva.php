@@ -100,6 +100,8 @@ else {
 				</tr>
 			</table>
 			<input type="hidden" name="id_recurso" value="<?php echo $idrecurso ;?>">
+			<input type="hidden" name="estado_reserva" value="<?php echo $estado ;?>">
+			<!-- <input type="hidden" name="estado_reserva" value="<?php echo $user ;?>"> -->
 			<div class="centrador">
 				<input name="grabarCita" class="cita" type="submit" id="grabarCita" value="Reservar">
 
