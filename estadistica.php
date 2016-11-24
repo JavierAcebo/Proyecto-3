@@ -47,10 +47,10 @@ else {
 	    <h2>Estadística de uso</h2>
 	    <form action="">
 	    <?php
-		$consulta =  mysqli_query ("SELECT * FROM tbl_recursos");
-          $numero = mysqli_num_rows($consulta);
-          $cantidad_personas = 0;                                  
-          while ($valores = mysqli_fetch_array($consulta)) {
+		$consulta =  mysqli_query ($con, "SELECT * FROM tbl_recursos");
+        $numero = mysqli_num_rows($consulta);
+        $cantidad_personas = 0;                                  
+        while ($valores = mysqli_fetch_array($consulta)) {
 
           	if ($valores['estado_recursos']) {
           		
