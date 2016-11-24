@@ -41,6 +41,7 @@ else {
 </head>
 <body>
 
+
 	<div class="login">
 	<div class="heading">
 	<form action="estadistica.php">
@@ -51,50 +52,53 @@ else {
 	include ("scripts/fechas.php");
 	extract($_POST);
 	// Se muestra la fecha en curso.
-	echo ("CITA PARA EL DÍA: ".$diaActual." del ".$mesActual." de ".$annioActual.salto);
+	echo ("Fecha de hoy: ".$diaActual." - ".$mesActual." - ".$annioActual.salto);
 	?>
 	<form action="reserva_guardar.php" method="post" name="formularioNuevaCita" id="formularioNuevaCita">
 		<input type="hidden" name="fechaEnCurso" id="fechaEnCurso" value="<?php echo($fechaEnCurso); ?>">
 			<table width="500" border="0" cellspacing="0" cellpadding="2">
 				<tr>
-					<td width="73">Hora inicio:</td>
-					<td width="150">Fecha inicio:<input type="date" name="fecha_inicio" id="fecha_inicio"></td>
-				</tr>
+					<td width="200">Hora inicio:</td>
+					<td width="350">Fecha inicio:</td>
+				</tr>	
 				<tr>
-					<td><select name="hora_inicio" id="hora_inicio">
+					<td><select name="hora_inicio" id="hora_inicio" required>
 						<?php
-						for ($i=0;$i<24;$i++){
+						for ($i=8;$i<20;$i++){
 							echo ("<OPTION VALUE='");
-							printf ("%02s",$i);
+							printf ("%2s:00:00",$i);
 							echo ("'>");
-							printf("%02s",$i);
-							echo ("</OPTION>".salto);
+							printf("%2s:00:00",$i);
+							echo ("</OPTION>");
 						}
+
 						?>
 					</select></td>
-					<td rowspan="3">Fecha final:<input type="date" name="fecha_final" id="fecha_final"></td>
+					<td><input type="date" name="fecha_final" id="fecha_final" required></td>
 				</tr>
 				<tr>
 					<td>Hora final:</td>
+					<td>Fecha final:</td>
 				</tr>
 				<tr>
-					<td><select name="hora_final" id="hora_final">
+					<td><select name="hora_final" id="hora_final" required>
 						<?php
-						for ($i=0;$i<24;$i++){
+						for ($i=8;$i<20;$i++){
 						echo ("<OPTION VALUE='");
-						printf ("%02s",$i);
+						printf ("%2s:00:00",$i);
 						echo ("'>");
-						printf("%02s",$i);
+						printf("%2s:00:00",$i);
 						echo ("</OPTION>".salto);
 						}
+						
 						?>
 					</select></td>
+					<td><input type="date" class="" name="fecha_inicio" id="fecha_inicio" required></td>
 				</tr>
 			</table>
 		<input type="hidden" name="id_recurso" value="<?php echo $idrecurso ;?>">
 		<input type="hidden" name="estado_reserva" value="<?php echo $estado ;?>">
 		<input type="hidden" name="n_recurso" value="<?php echo $nom_recurso ;?>">
-		<!-- <input type="hidden" name="estado_reserva" value="<?php echo $user ;?>"> -->
 		<div class="centrador">
 		<input name="grabarCita" class="cita" type="submit" id="grabarCita" value="Reservar">
 		<input name="anularCita" class="cita" type="submit" id="anularCita" value="Cancelar">			
